@@ -8,6 +8,7 @@
 # Merge files
 *.orig
 *.rej
+*.vscode
 
 # Build artifacts
 .clang_complete
