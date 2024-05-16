@@ -15,10 +15,19 @@
 //----------------------------------------------------------------------
 // RGB Settings
 //----------------------------------------------------------------------
-#define RGB_MATRIX_SLEEP    // turn off RGB underglow when host goes to sleep
-#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100 // limits maximum brightness of LEDs (max 255). Higher may cause the controller to crash.
-#define SPLIT_TRANSPORT_MIRROR // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR
-#define RGBLIGHT_LED_COUNT 35    // Number of LEDs
+#define RGBLIGHT_SLEEP
+#define RGBLIGHT_LAYERS
+#define WS2812_DI_PIN D3
+
+#ifdef RGBLIGHT_ENABLE
+    #undef RGBLIGHT_LED_COUNT
+
+    #define RGBLIGHT_LED_COUNT 70
+    #define RGBLIGHT_LIMIT_VAL 120
+    #define RGBLIGHT_HUE_STEP 10
+    #define RGBLIGHT_SAT_STEP 17
+    #define RGBLIGHT_VAL_STEP 17
+#endif
 
 //----------------------------------------------------------------------
 // Keymap Settings
