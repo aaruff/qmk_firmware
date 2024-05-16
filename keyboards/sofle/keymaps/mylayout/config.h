@@ -31,7 +31,6 @@
 
 #define CUSTOM_LAYER_READ //if you remove this it causes issues - needs better guarding
 
-
 #define QUICK_TAP_TERM 0
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM
