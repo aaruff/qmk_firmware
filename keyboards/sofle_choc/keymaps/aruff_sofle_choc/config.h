@@ -1,17 +1,5 @@
-/* Copyright 2023 Brian Low
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+/**
+ * Configuration Settings for the Sofle Keyboard
  */
 #pragma once
 
@@ -24,6 +12,27 @@
 // I've found this helps with some ProMicros where the slave does not boot
 #define SPLIT_USB_DETECT
 
-#define RGB_MATRIX_SLEEP     // turn off effects when suspended
-#define SPLIT_TRANSPORT_MIRROR             // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR
-#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100  // limits maximum brightness of LEDs (max 255). Higher may cause the controller to crash.
+//----------------------------------------------------------------------
+// RGB Settings
+//----------------------------------------------------------------------
+#define RGB_MATRIX_SLEEP    // turn off RGB underglow when host goes to sleep
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100 // limits maximum brightness of LEDs (max 255). Higher may cause the controller to crash.
+#define SPLIT_TRANSPORT_MIRROR // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR
+#define RGBLIGHT_LED_COUNT 35    // Number of LEDs
+
+//----------------------------------------------------------------------
+// Keymap Settings
+//----------------------------------------------------------------------
+#define INDICATOR_BRIGHTNESS 30 // brightness of the keyboard indicator LED
+
+#define QUICK_TAP_TERM 0 // prevents quick taps from being interpreted as a hold
+// Tapping term is the time (in ms) before a tap becomes a hold
+#ifdef TAPPING_TERM
+    #undef TAPPING_TERM // undefine TAPPING_TERM if it is already defined
+    #define TAPPING_TERM 200 // set tapping term to 200ms
+#endif
+
+//----------------------------------------------------------------------
+// Encoder Settings
+//----------------------------------------------------------------------
+#define ENCODER_DIRECTION_FLIP

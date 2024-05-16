@@ -15,6 +15,7 @@
  */
 #include QMK_KEYBOARD_H
 
+
 // Layer Names
 enum sofle_layers {
     _QWERTY = 0,
@@ -166,12 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	),
 };
 
-#if defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
-};
-#endif
-
+//--------------------------------------------------------------------------------------------------
+// OLED Display
+//--------------------------------------------------------------------------------------------------
 #ifdef OLED_ENABLE
 
 static void render_logo(void) {
@@ -243,6 +241,9 @@ bool oled_task_user(void) {
 }
 #endif
 
+//--------------------------------------------------------------------------------------------------
+// Encoder: Volume and Navigation
+//--------------------------------------------------------------------------------------------------
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_QWERTY:
@@ -286,3 +287,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+#ifdef ENCODER_ENABLE
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
+        if (clockwise) {
+            tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);
+        }
+		} else if (index == 1) {
+			switch (get_highest_layer(layer_state)) {
+				case _QWERTY:
+                case _RAISE:
+                case _LOWER:
+                        if (clockwise) {
+                            tap_code(KC_DOWN);
+                        } else {
+                            tap_code(KC_UP);
+                        }
+                    break;
+                default:
+                        if (clockwise) {
+                            tap_code(KC_WH_D);
+                        } else {
+                            tap_code(KC_WH_U);
+                        }
+                    break;
+            }
+        }
+    return true;
+}
+
+#endif
