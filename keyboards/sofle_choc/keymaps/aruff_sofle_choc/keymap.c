@@ -178,12 +178,12 @@ static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
-            oled_write_P(PSTR("Qwerty"), false);
+            oled_write_P(PSTR("Qwerty\n"), false);
         case _NAV:
-            oled_write_P(PSTR("Nav"), false);
+            oled_write_P(PSTR("Nav\n"), false);
             break;
         case _SYMBL:
-            oled_write_P(PSTR("Symbol"), false);
+            oled_write_P(PSTR("Symbol\n"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("Adj\n"), false);
