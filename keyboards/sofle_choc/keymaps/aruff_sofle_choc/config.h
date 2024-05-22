@@ -1,4 +1,5 @@
 /**
+ * config.h
  * Configuration Settings for the Sofle Keyboard
  */
 #pragma once
@@ -11,6 +12,7 @@
 //
 // I've found this helps with some ProMicros where the slave does not boot
 #define SPLIT_USB_DETECT
+#define SPLIT_TRANSPORT_MIRROR
 
 //----------------------------------------------------------------------
 // RGB Settings
@@ -21,7 +23,6 @@
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLIGHT_LED_COUNT
-
     #define RGBLIGHT_LED_COUNT 70
     #define RGBLIGHT_LIMIT_VAL 120
     #define RGBLIGHT_HUE_STEP 10
@@ -32,15 +33,14 @@
 //----------------------------------------------------------------------
 // Keymap Settings
 //----------------------------------------------------------------------
-#define INDICATOR_BRIGHTNESS 30 // brightness of the keyboard indicator LED
-
+#define INDICATOR_BRIGHTNESS 10 // brightness of the keyboard indicator LED
 #define QUICK_TAP_TERM 0 // prevents quick taps from being interpreted as a hold
 // Tapping term is the time (in ms) before a tap becomes a hold
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM // undefine TAPPING_TERM if it is already defined
-    #define TAPPING_TERM 200 // set tapping term to 200ms
+    #define TAPPING_TERM 175
 #endif
-
+#define PERMISSIVE_HOLD
 //----------------------------------------------------------------------
 // Encoder Settings
 //----------------------------------------------------------------------
