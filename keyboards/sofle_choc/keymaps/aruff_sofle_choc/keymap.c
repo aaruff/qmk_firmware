@@ -178,24 +178,25 @@ static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
-            oled_write_P(PSTR("Qwerty\n"), false);
+            oled_write_P(PSTR("Qwrty\n"), false);
+            break;
         case _NAV:
             oled_write_P(PSTR("Nav\n"), false);
             break;
         case _SYMBL:
-            oled_write_P(PSTR("Symbol\n"), false);
+            oled_write_P(PSTR("Symbl\n"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("Adj\n"), false);
             break;
         case _NUMPAD:
-            oled_write_P(PSTR("Number\n"), false);
+            oled_write_P(PSTR("Num\n"), false);
             break;
         case _SWITCH:
-            oled_write_P(PSTR("Switch\n"), false);
+            oled_write_P(PSTR("Swtch\n"), false);
             break;
         default:
-            oled_write_ln_P(PSTR("Undef"), false);
+            oled_write_ln_P(PSTR("Undef\n"), false);
     }
 }
 
