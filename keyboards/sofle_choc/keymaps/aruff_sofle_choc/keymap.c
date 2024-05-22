@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      | F10  | F11  | F12  |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |  F7  |  F8  |  F9  |      |                    |      |   {  |   }  |   |  |   \  |  +   |
+ * |      |      |  F7  |  F8  |  F9  |      |                    |      |   {  |   }  |   |  |   \  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |  F4  |  F5  |  F6  |      |-------.    ,-------|      |   [  |   ]  |      |      |BKSPC |
+ * |      |      |  F4  |  F5  |  F6  |      |-------.    ,-------|      |   [  |   ]  |   +  |   -  |BKSPC |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |  F1  |  F2  |  F3  |      |-------|    |-------|      |   (  |   )  |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -61,9 +61,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `----------------------------------'           '------''---------------------------'
  */
 [_SYMBL] = LAYOUT(
-  XXXXXXX, XXXXXXX,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PLUS,
+  XXXXXXX, XXXXXXX,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,   KC_F7,   KC_F8,   KC_F9, XXXXXXX,                         XXXXXXX, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, XXXXXXX,
-  XXXXXXX, XXXXXXX,   KC_F4,   KC_F5,   KC_F6, XXXXXXX,                         XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, KC_BSPC,
+  XXXXXXX, XXXXXXX,   KC_F4,   KC_F5,   KC_F6, XXXXXXX,                         XXXXXXX, KC_LBRC, KC_RBRC, KC_PLUS, KC_MINUS, KC_BSPC,
   XXXXXXX, XXXXXXX,   KC_F1,   KC_F2,   KC_F3, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, SC_LSPO, SC_RSPC, XXXXXXX, XXXXXXX, XXXXXXX,
            _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
 ),
