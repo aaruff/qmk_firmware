@@ -1,0 +1,152 @@
+layout: {qmk_keyboard: sofle_choc, qmk_layout: LAYOUT}
+layers:
+  L0:
+  - ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  - ['0', '-', TAB, Q, W, E, R, T, Y, U]
+  - - I
+    - O
+    - P
+    - BSPC
+    - {t: ESC, h: KC_NAV}
+    - {t: A, h: MOD_LCTL}
+    - {t: S, h: MOD_LALT}
+    - {t: D, h: MOD_LGUI}
+    - {t: F, h: MOD_LSFT}
+    - G
+  - - H
+    - {t: J, h: MOD_RSFT}
+    - {t: K, h: MOD_RGUI}
+    - {t: L, h: MOD_RALT}
+    - {t: ;, h: MOD_RCTL}
+    - ''''
+    - LSFT
+    - Z
+    - X
+    - C
+  - [V, B, '', '', N, M, ',', ., /, RSFT]
+  - ['', NUMPAD, SYMBL, SPC, NAV, NAV, ENT, SYMBL, '', '']
+  L1:
+  - ['', '', F10, F11, F12, '', '', '', '', '']
+  - ['', '', '', '', F7, F8, F9, '', '', '{']
+  - ['}', '|', \, '', '', '', F4, F5, F6, '']
+  - ['', '[', ']', +, '-', BSPC, '', '', F1, F2]
+  - [F3, '', '', '', '', SC LSPO, SC RSPC, '', '', '']
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  L2:
+  - ['', '', '', '', '', '', '', '', '', '']
+  - - ''
+    - ''
+    - {t: ▽, type: trans}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - ['', '', '', '', '', '', '', '', '', '']
+  - [LEFT, DOWN, UP, RGHT, '', '', '', Ctl+ Z, Ctl+ X, Ctl+ C]
+  - [Ctl+ V, '', '', '', '', '', '', '', '', '']
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  L3:
+  - [EE CLR, '', '', '', '', '', '', '', '', '']
+  - ['', '', QK BOOT, '', '', '', '', '', '', '']
+  - - ''
+    - ''
+    - ''
+    - ''
+    - RGB TOG
+    - RGB HUI
+    - RGB SAI
+    - RGB VAI
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - [Ctl+Gui+ LEFT, '', '', Ctl+Gui+ RGHT, '', '', RGB MOD, RGB HUD, RGB SAD, RGB VAD]
+  - ['', QWERTY, '', '', '', MPRV, MPLY, MNXT, '', '']
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  L4:
+  - - {t: ▽, type: trans}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - {t: ▽, type: trans}
+    - NUM
+    - ''
+    - ''
+  - ['', '', '', '', '', '', '', '', ^, P7]
+  - [P8, P9, '*', '', '', '', '', '', '', '']
+  - ['-', P4, P5, P6, '=', '|', '', '', '', '']
+  - - ''
+    - ''
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - +
+    - P1
+    - P2
+    - P3
+    - /
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - P0
+    - PDOT
+    - {t: ▽, type: trans}
+  L5:
+  - - {t: ▽, type: trans}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - {t: L0, h: toggle}
+    - {t: L1, h: toggle}
+    - {t: L2, h: toggle}
+    - {t: L3, h: toggle}
+    - {t: L4, h: toggle}
+    - ''
+    - ''
+    - ''
+  - ['', '', '', QK BOOT, '', '', BRIU, '', '', '']
+  - ['', '', '', '', '', EE CLR, SYSTEM SLEEP, '', '', '']
+  - ['', '', '', '', '', '', '', '', '', '']
+  - ['', '', '', '', '', '', '', '', '', '']
