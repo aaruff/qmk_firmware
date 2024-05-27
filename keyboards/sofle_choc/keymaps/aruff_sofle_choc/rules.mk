@@ -8,7 +8,7 @@ EXTRAKEY_ENABLE = yes
 CONSOLE_ENABLE = no
 
 # Enable RGB lighting support
-RGBLIGHT_ENABLE = yes
+RGBLIGHT_ENABLE = no
 
 # Enable encoder support (e.g., for rotary encoders)
 ENCODER_ENABLE = yes
@@ -18,3 +18,6 @@ LTO_ENABLE = yes
 
 # Enable OLED display support
 OLED_ENABLE = yes
+
+# WPM Support
+WPM_ENABLE = yes

@@ -4,22 +4,30 @@
 // Layer Names
 enum sofle_layers {
     _QWERTY = 0,
-    _SYMBL, // Functions Keys, Numbers, and Symbols
+    _SYMBL,
     _NAV,
-    _ADJUST,
-    _NUMPAD,
-    _SWITCH
 };
 
 // Custom Keycodes for Layer Switching
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
-    KC_SYMBL,
+    KC_SMB,
     KC_NAV,
-    KC_NUMPAD,
-    KC_ADJUST,
-    KC_D_MUTE
 };
+
+// Define aliases for Mod-Tap keys
+#define NAV_ESC    LT(KC_NAV, KC_ESC)
+#define CTL_Z      MT(MOD_LCTL, KC_Z)
+#define ALT_X      MT(MOD_LALT, KC_X)
+#define GUI_C      MT(MOD_LGUI, KC_C)
+#define SFT_V      MT(MOD_LSFT, KC_V)
+#define SFT_M      MT(MOD_RSFT, KC_M)
+#define GUI_COMM   MT(MOD_RGUI, KC_COMM)
+#define ALT_DOT    MT(MOD_RALT, KC_DOT)
+#define CTL_SLSH   MT(MOD_RCTL, KC_SLSH)
+
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * QWERTY
@@ -29,148 +37,116 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | TAB  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |BKSPC |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   A  |   S  |   D  |   F  |   G  |                    |   H  |   J  |   K  |   L  |   ;  |  '   |
- * |      | LCTRL| LALT | LGUI |LSHFT |      |-------.    ,-------|      |RSHFT | RGUI | RALT | RCTRL|      |
+ * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      | NUM  | SYMB |SPACE | / NAV   /       \ NAV  \  |ENTER | SYMB |      |      |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
+ * |LShift|   Z  |   X  |   C  |   V  |   B  |-------'    '-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+ * |      | LCTRL| LALT | LGUI |LSHFT |      |                    |      |RSHFT | RGUI | RALT | RCTRL|      |
+ * `-----------------------------------------|-------.    .-------|-----------------------------------------'
+ *               |      |      | SYMB |SPACE | NAV   |    |  NAV  | ENTER| SYMB |      |BKSPC |
+ *               `-----------------------------------'    '-----------------------------------
  */
 
 [_QWERTY]=LAYOUT(
-    KC_GRV,      KC_1,       KC_2 ,     KC_3,     KC_4,   KC_5,                        KC_6,      KC_7,      KC_8,      KC_9,         KC_0, KC_MINUS,
-    KC_TAB,      KC_Q,       KC_W ,     KC_E,     KC_R,   KC_T,                        KC_Y,      KC_U,      KC_I,      KC_O,         KC_P, KC_BSPC,
-    MT(KC_NAV, KC_ESC), MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F),   KC_G,                        KC_H, MT(MOD_RSFT, KC_J), MT(MOD_RGUI, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RCTL, KC_SCLN), KC_QUOT,
-    KC_LSFT,     KC_Z,      KC_X,      KC_C,      KC_V,   KC_B, XXXXXXX,      XXXXXXX, KC_N,      KC_M,   KC_COMM,    KC_DOT,      KC_SLSH, KC_RSFT,
-              XXXXXXX, KC_NUMPAD,  KC_SYMBL,    KC_SPC, KC_NAV,                        KC_NAV,  KC_ENT,  KC_SYMBL,   XXXXXXX,      XXXXXXX
+     KC_GRV,  KC_1,   KC_2,    KC_3,   KC_4,   KC_5,                        KC_6,  KC_7,      KC_8,    KC_9,     KC_0, KC_MINUS,
+     KC_TAB,  KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,                        KC_Y,  KC_U,      KC_I,    KC_O,     KC_P,  KC_BSPC,
+    NAV_ESC,  KC_A,   KC_S,    KC_D,   KC_F,   KC_G,                        KC_H,  KC_J,      KC_K,    KC_L,  KC_SCLN,  KC_QUOT,
+    KC_LSFT, CTL_Z,  ALT_X,   GUI_C,  SFT_V,   KC_B, XXXXXXX,      XXXXXXX, KC_N, SFT_M,  GUI_COMM, ALT_DOT, CTL_SLSH,  KC_RSFT,
+            XXXXXXX, XXXXXXX, KC_SMB, KC_SPC, KC_NAV,                        KC_NAV, KC_ENT, KC_SMB, XXXXXXX,  KC_BSPC
 ),
 
 /* SYMBL
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      | F10  | F11  | F12  |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |  F7  |  F8  |  F9  |      |                    |      |   {  |   }  |   |  |   \  |      |
+ * |      |      |  F7  |  F8  |  F9  |      |                    |      |   {  |   }  |   |  |   \  |  =   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |  F4  |  F5  |  F6  |      |-------.    ,-------|      |   [  |   ]  |   +  |   -  |BKSPC |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |  F1  |  F2  |  F3  |      |-------|    |-------|      |   (  |   )  |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      | NUM  | SYMB |SPACE | / NAV   /       \ NAV  \  |ENTER | SYMB |      |      |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
+ * |      |      |  F1  |  F2  |  F3  |      |-------.    .-------|      |   (  |   )  |   ,  |   /  |RShift|
+ * `-----------------------------------------|-------.    .-------|-----------------------------------------'
+ *               |      | NUM  | SYMB |SPACE | NAV   |    |  NAV  | ENTER| SYMB |      |BKSPC |
+ *               `-----------------------------------'    '-----------------------------------
+*/
 [_SYMBL] = LAYOUT(
   XXXXXXX, XXXXXXX,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX,   KC_F7,   KC_F8,   KC_F9, XXXXXXX,                         XXXXXXX, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, XXXXXXX,
+  XXXXXXX, XXXXXXX,   KC_F7,   KC_F8,   KC_F9, XXXXXXX,                         XXXXXXX, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, KC_EQL,
   XXXXXXX, XXXXXXX,   KC_F4,   KC_F5,   KC_F6, XXXXXXX,                         XXXXXXX, KC_LBRC, KC_RBRC, KC_PLUS, KC_MINUS, KC_BSPC,
-  XXXXXXX, XXXXXXX,   KC_F1,   KC_F2,   KC_F3, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, SC_LSPO, SC_RSPC, XXXXXXX, XXXXXXX, XXXXXXX,
+  _______, XXXXXXX,   KC_F1,   KC_F2,   KC_F3, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, SC_LSPO, SC_RSPC, KC_COMM, KC_SLSH, _______,
            _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
 ),
 /* NAV
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |                    | Paste| Copy | Cut  |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |      |      |      |      |      |-------.    ,-------| Left | Down | Up   |Right |  Del | Bspc |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |Shift | Undo |  Cut | Copy | Paste|      |-------|    |-------|      |      |      |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      |      | LCMD |SPACE | / NAV   /       \ NAV  \  |ENTER |SYMBL |      |      |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
+ * |Shift | Undo |  Cut | Copy | Paste|      |-------.    .-------| Undo | Again|      |      |      |      |
+ * `-----------------------------------------|-------.    .-------|-----------------------------------------'
+ *               |      | NUM  | SYMB |SPACE | NAV   |    |  NAV  | ENTER| SYMB |      |BKSPC |
+ *               `-----------------------------------'    '-----------------------------------
  */
 [_NAV] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX ,XXXXXXX,
-  _______, _______, _______, _______, _______, _______,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
-  XXXXXXX, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), XXXXXXX, XXXXXXX,       XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          C(KC_V), C(KC_C), C(KC_X), XXXXXXX, XXXXXXX, XXXXXXX,
+  _______, _______, _______, _______, _______, _______,                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
+  XXXXXXX, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), XXXXXXX, XXXXXXX,       XXXXXXX,  KC_UNDO, KC_AGIN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
            _______, _______, _______, _______, _______,                          _______, _______, _______, _______, _______
-),
-/* ADJUST
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | BOOT |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |RGB_TOG|hue^ |sat ^ | bri ^|      |      |-------.    ,-------|desk <|      |      |desk >|      |      |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * | mode | hue dn|sat d|bri dn|      |QWERTY|-------|    |-------|      | PREV | PLAY | NEXT |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      |      | LCMD |SPACE | / NAV   /       \ NAV  \  |ENTER |SYMBL |      |      |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-  [_ADJUST] = LAYOUT(
-  EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  QK_BOOT, XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  RGB_TOG, RGB_HUI,RGB_SAI, RGB_VAI, _______,_______,             C(G(KC_LEFT)),KC_NO,KC_NO,C(G(KC_RGHT)),XXXXXXX, XXXXXXX,
-  RGB_MOD, RGB_HUD,RGB_SAD, RGB_VAD, XXXXXXX,KC_QWERTY,XXXXXXX,   XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-),
-/* NUMPAD
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |NumLck|      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |   ^  |   7  |   8  |   9  |   *  |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|   -  |   4  |   5  |   6  |  eq  |   |  |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|   +  |   1  |   2  |   3  |   \  |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      | NUM  | SYMB |SPACE | / NAV   /       \ NAV  \  |ENTER | SYMB |      |      |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-[_NUMPAD] = LAYOUT(
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    _______, KC_NUM,  XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    KC_CIRC, KC_P7,  KC_P8,   KC_P9,   KC_ASTR, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    KC_MINS, KC_P4,  KC_P5,   KC_P6,   KC_EQL,  KC_PIPE,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,_______,   _______, KC_PLUS, KC_P1,  KC_P2,   KC_P3,   KC_SLSH, _______,
-                    _______, _______, _______, _______, _______,  _______, _______,  KC_P0,   KC_PDOT, _______
-),
-/* SWITCH
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | qwer |low   |raise |adj   |numpad|      |                    |      |      |      |      |      |QK_BOOT |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |EE_CLR|
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * | SLEEP|      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      | NUM  | SYMB |SPACE | / NAV   /       \ NAV  \  |ENTER | SYMB |      |      |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-  // layer switcher
-[_SWITCH] = LAYOUT(
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX,
-  TO(0),   TO(1),   TO(2),   TO(3),   TO(4),   KC_NO,                      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   QK_BOOT,
-  KC_NO,   KC_NO, KC_BRIU,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   EE_CLR,
-  KC_SYSTEM_SLEEP,KC_NO,KC_NO,KC_NO,  KC_NO,   KC_NO, KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO
-	),
+)
 };
+
+//--------------------------------------------------------------------------------------------------
+// RGB Undrekey lighting
+//--------------------------------------------------------------------------------------------------
+void keyboard_post_init_user(void) {
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+    rgb_matrix_sethsv_noeeprom(0, 0, 120);  // Hue 0, Saturation 0 (white), Brightness 120
+}
+
 
 //--------------------------------------------------------------------------------------------------
 // OLED Display (128x32)
 //--------------------------------------------------------------------------------------------------
 #ifdef OLED_ENABLE
 
+// 32x32 ([32x32/8] is 128 bytes) pixel logo
 static void render_logo(void) {
-    static const char PROGMEM hello_logo[] = {0x00, 0x80, 0xc0, 0xc0, 0x60, 0x60, 0x30, 0x30, 0x18, 0x1c, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x80, 0xe0, 0x78, 0x1e, 0x06, 0x00, 0x0c, 0x1c, 0x18, 0x30, 0x30, 0x60, 0x60, 0xc0, 0xc0, 0x80, 0x00, 0x01, 0x03, 0x07, 0x06, 0x0c, 0x0c, 0x18, 0x18, 0x30, 0x70, 0x60, 0x00, 0xc0, 0xf0, 0x3c, 0x0f, 0x03, 0x00, 0x00, 0x00, 0x00, 0x60, 0x70, 0x30, 0x18, 0x18, 0x0c, 0x0c, 0x06, 0x07, 0x03, 0x01, 0x00, 0xf8, 0xf8, 0x80, 0x80, 0x80, 0xf8, 0xf8, 0x00, 0x80, 0xc0, 0xc0, 0x40, 0xc0, 0xc0, 0x80, 0x00, 0xf8, 0xf8, 0x00, 0xf8, 0xf8, 0x00, 0x08, 0x38, 0x08, 0x00, 0x38, 0x08, 0x30, 0x08, 0x38, 0x00, 0x1f, 0x1f, 0x01, 0x01, 0x01, 0x1f, 0x1f, 0x00, 0x0f, 0x1f, 0x1a, 0x12, 0x1a, 0x1b, 0x0b, 0x00, 0x1f, 0x1f, 0x00, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    static const char PROGMEM logo[] = {
+        0x00, 0x00, 0x80, 0xc0, 0xe0, 0x30, 0x18, 0x1c, 0x8c, 0x86, 0x86, 0x06, 0x03, 0xff, 0xff, 0x03,
+        0x03, 0x03, 0x03, 0x83, 0xc6, 0xfe, 0xce, 0x8c, 0x1c, 0x18, 0x30, 0xe0, 0xc0, 0x80, 0x00, 0x00,
+        0xf0, 0xfe, 0x0f, 0x01, 0x00, 0x00, 0x00, 0x07, 0x0f, 0x09, 0x0d, 0x0f, 0x06, 0x47, 0xf7, 0xb0,
+        0xb0, 0xf0, 0x40, 0x03, 0x07, 0x04, 0x07, 0x07, 0xf0, 0xf0, 0x98, 0xf0, 0xe1, 0x07, 0xfe, 0xf0,
+        0x0f, 0x7f, 0xf0, 0x80, 0x0e, 0x1f, 0x13, 0x1b, 0x3e, 0xf0, 0xe0, 0x00, 0x00, 0x00, 0x01, 0xff,
+        0xff, 0x01, 0x00, 0x00, 0x00, 0xfc, 0xfe, 0x03, 0x01, 0x01, 0x01, 0x01, 0x80, 0xf0, 0x7f, 0x0f,
+        0x00, 0x00, 0x01, 0x03, 0x07, 0x0c, 0x18, 0x38, 0x30, 0x7f, 0x7f, 0x60, 0xc0, 0xc0, 0xc0, 0xff,
+        0xff, 0xc0, 0xc0, 0xc0, 0x60, 0x7f, 0x7f, 0x30, 0x38, 0x18, 0x0c, 0x07, 0x03, 0x01, 0x00, 0x00
+        };
 
-    oled_write_P(hello_logo, false); // Write the QMK Logo
+    oled_write_raw_P(logo, sizeof(logo));
+}
+
+// 32 * 14 OS logos
+static const char PROGMEM windows_logo[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbc, 0xbc, 0xbe, 0xbe, 0x00, 0xbe,
+    0xbe, 0xbf, 0xbf, 0xbf, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x0f, 0x0f, 0x00, 0x0f, 0x0f, 0x1f,
+    0x1f, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+static const char PROGMEM mac_logo[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf0, 0xf8, 0xf8, 0xf8, 0xf0,
+    0xf6, 0xfb, 0xfb, 0x38, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x07, 0x0f, 0x1f, 0x1f, 0x0f, 0x0f, 0x1f,
+    0x1f, 0x0f, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+static void print_logo_narrow(void) {
+    render_logo();
 }
 
 static void print_status_narrow(void) {
-    // Print current mode
-    oled_write_P(PSTR("\n"), false);
-    oled_write_ln_P(PSTR("Anwar\nRuff\n"), false);
-    oled_write_P(PSTR("\n\n"), false);
-    // Print current layer
+    oled_set_cursor(0, 0);
+    oled_write_raw_P(mac_logo, sizeof(mac_logo));
+    oled_set_cursor(0, 5);
+
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
@@ -182,76 +158,51 @@ static void print_status_narrow(void) {
         case _SYMBL:
             oled_write_P(PSTR("Symbl\n"), false);
             break;
-        case _ADJUST:
-            oled_write_P(PSTR("Adj\n"), false);
-            break;
-        case _NUMPAD:
-            oled_write_P(PSTR("Num\n"), false);
-            break;
-        case _SWITCH:
-            oled_write_P(PSTR("Swtch\n"), false);
-            break;
         default:
             oled_write_ln_P(PSTR("Undef\n"), false);
     }
+
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return is_keyboard_master() ? OLED_ROTATION_270 : rotation;
+    return OLED_ROTATION_270;
 }
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         print_status_narrow();
     } else {
-        render_logo();
+        print_logo_narrow();
     }
     return false;
 }
 #endif
+
 //--------------------------------------------------------------------------------------------------
 // Button event listener
 //--------------------------------------------------------------------------------------------------
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Default behavior for all other keys
     switch (keycode) {
-        case KC_QWERTY:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_QWERTY);
-            }
-            return false;
-        case KC_SYMBL:
+        case KC_SMB:
             if (record->event.pressed) {
                 layer_on(_SYMBL);
-                update_tri_layer(_SYMBL, _NAV, _ADJUST);
             } else {
                 layer_off(_SYMBL);
-                update_tri_layer(_SYMBL, _NAV, _ADJUST);
             }
             return false;
         case KC_NAV:
             if (record->event.pressed) {
                 layer_on(_NAV);
-                update_tri_layer(_SYMBL, _NAV, _ADJUST);
             } else {
                 layer_off(_NAV);
-                update_tri_layer(_SYMBL, _NAV, _ADJUST);
             }
             return false;
-        case KC_ADJUST:
+        case KC_QWERTY:
             if (record->event.pressed) {
-                layer_on(_ADJUST);
-            } else {
-                layer_off(_ADJUST);
+                set_single_persistent_default_layer(_QWERTY);
             }
             return false;
-        case KC_D_MUTE:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_MEH));
-                register_code(KC_UP);
-            } else {
-                unregister_mods(mod_config(MOD_MEH));
-                unregister_code(KC_UP);
-            }
     }
     return true;
 }

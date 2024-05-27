@@ -17,18 +17,18 @@
 //----------------------------------------------------------------------
 // RGB Settings
 //----------------------------------------------------------------------
-#define RGBLIGHT_SLEEP
-#define RGBLIGHT_LAYERS
-#define WS2812_DI_PIN D3
+#define RGB_MATRIX_KEYPRESSES
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120
 
-#ifdef RGBLIGHT_ENABLE
-    #undef RGBLIGHT_LED_COUNT
-    #define RGBLIGHT_LED_COUNT 70
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
-#endif
+#undef RGB_MATRIX_HUE_STEP
+#define RGB_MATRIX_HUE_STEP 10
+#undef RGB_MATRIX_SAT_STEP
+#define RGB_MATRIX_SAT_STEP 17
+#undef RGB_MATRIX_VAL_STEP
+#define RGB_MATRIX_VAL_STEP 17
+
+#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
 
 //----------------------------------------------------------------------
 // Keymap Settings
@@ -45,3 +45,10 @@
 // Encoder Settings
 //----------------------------------------------------------------------
 #define ENCODER_DIRECTION_FLIP
+
+
+//----------------------------------------------------------------------
+// OLED Settings
+//----------------------------------------------------------------------
+#define OLED_TIMEOUT 120000
+#define OLED_BRIGHTNESS 120

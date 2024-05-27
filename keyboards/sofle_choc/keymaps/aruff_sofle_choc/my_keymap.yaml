@@ -1,6 +1,6 @@
 layout: {qmk_keyboard: sofle_choc, qmk_layout: LAYOUT}
 layers:
-  L0:
+  QWERTY:
   - ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   - ['0', '-', TAB, Q, W, E, R, T, Y, U]
   - - I
@@ -23,14 +23,32 @@ layers:
     - Z
     - X
     - C
-  - [V, B, '', '', N, M, ',', ., /, RSFT]
+  - - {t: V, h: KC_NO_MOD}
+    - B
+    - ''
+    - ''
+    - N
+    - M
+    - ','
+    - .
+    - /
+    - RSFT
   - ['', NUMPAD, SYMBL, SPC, NAV, NAV, ENT, SYMBL, '', '']
-  L1:
+  SYMBL:
   - ['', '', F10, F11, F12, '', '', '', '', '']
   - ['', '', '', '', F7, F8, F9, '', '', '{']
-  - ['}', '|', \, '', '', '', F4, F5, F6, '']
+  - ['}', '|', \, '=', '', '', F4, F5, F6, '']
   - ['', '[', ']', +, '-', BSPC, '', '', F1, F2]
-  - [F3, '', '', '', '', SC LSPO, SC RSPC, '', '', '']
+  - - F3
+    - ''
+    - ''
+    - ''
+    - ''
+    - SC LSPO
+    - SC RSPC
+    - ','
+    - /
+    - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -41,21 +59,21 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  L2:
+  NAV:
   - ['', '', '', '', '', '', '', '', '', '']
-  - - ''
+  - ['', '', '', '', '', '', '', '', Ctl+ V, Ctl+ C]
+  - - Ctl+ X
+    - ''
+    - ''
     - ''
     - {t: ▽, type: trans}
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-  - ['', '', '', '', '', '', '', '', '', '']
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
   - [LEFT, DOWN, UP, RGHT, '', '', '', Ctl+ Z, Ctl+ X, Ctl+ C]
-  - [Ctl+ V, '', '', '', '', '', '', '', '', '']
+  - [Ctl+ V, '', '', '', UNDO, AGIN, '', '', '', '']
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -66,7 +84,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  L3:
+  ADJ:
   - [EE CLR, '', '', '', '', '', '', '', '', '']
   - ['', '', QK BOOT, '', '', '', '', '', '', '']
   - - ''
@@ -91,7 +109,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  L4:
+  NUM:
   - - {t: ▽, type: trans}
     - ''
     - ''
@@ -125,7 +143,7 @@ layers:
     - P0
     - PDOT
     - {t: ▽, type: trans}
-  L5:
+  SWITCH:
   - - {t: ▽, type: trans}
     - ''
     - ''
