@@ -20,8 +20,6 @@ enum custom_keycodes {
 #define NAV_F      LT(KC_NAV, KC_F)
 #define SMB_S      LT(KC_SMB, KC_S)
 
-
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * QWERTY
