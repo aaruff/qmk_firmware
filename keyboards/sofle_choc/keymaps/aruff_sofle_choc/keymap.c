@@ -18,14 +18,7 @@ enum custom_keycodes {
 
 // Define aliases for Mod-Tap keys
 #define NAV_F      LT(KC_NAV, KC_F)
-#define CTL_Z      MT(MOD_LCTL, KC_Z)
-#define ALT_X      MT(MOD_LALT, KC_X)
-#define GUI_C      MT(MOD_LGUI, KC_C)
-#define SFT_V      MT(MOD_LSFT, KC_V)
-#define SFT_M      MT(MOD_RSFT, KC_M)
-#define GUI_COMM   MT(MOD_RGUI, KC_COMM)
-#define ALT_DOT    MT(MOD_RALT, KC_DOT)
-#define CTL_SLSH   MT(MOD_RCTL, KC_SLSH)
+#define SMB_S      LT(KC_SMB, KC_S)
 
 
 
@@ -38,20 +31,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | TAB  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  =   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   A  |   S  |   D  |   F  |   G  |                    |   H  |   J  |   K  |   L  |   ;  |  '   |
- * |      |      |      |      | NAV  |      |-------.    ,-------|      |      |      |      |      |      |
+ * |      |      | SYMB |      | NAV  |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------'    '-------|   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SYMB  | SPC   |    | ENTER | BKSPC| CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | CMD  |BKSPC | SPC   |    | ENTER | FKEY | CMD  | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
  */
 
 [_QWERTY]=LAYOUT(
      KC_GRV,  KC_1,   KC_2,    KC_3,   KC_4,   KC_5,                        KC_6,  KC_7,      KC_8,    KC_9,     KC_0, KC_MINUS,
      KC_TAB,  KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,                        KC_Y,  KC_U,      KC_I,    KC_O,     KC_P,  KC_EQL,
-    KC_ESC,  KC_A,   KC_S,    KC_D,   NAV_F,   KC_G,                        KC_H,  KC_J,      KC_K,    KC_L,  KC_SCLN,  KC_QUOT,
+    KC_ESC,  KC_A,   SMB_S,    KC_D,   NAV_F,   KC_G,                        KC_H,  KC_J,      KC_K,    KC_L,  KC_SCLN,  KC_QUOT,
     KC_LSFT, KC_Z,  KC_X,   KC_C,  KC_V,   KC_B, XXXXXXX,      XXXXXXX, KC_N, KC_M,  GUI_COMM, ALT_DOT, CTL_SLSH,  KC_RSFT,
-            KC_LCTL, KC_LALT, KC_LGUI, KC_SMB, KC_SPC,                        KC_ENT, KC_BSPC, KC_RGUI, KC_RALT, KC_RCTL
+            KC_LCTL, KC_LALT, KC_LGUI, KC_BSPC, KC_SPC,                        KC_ENT, KC_FKEY, KC_RGUI, KC_RALT, KC_RCTL
 ),
 
 /* SYMBL
@@ -64,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------'    '-------|      |   (  |   )  |   ,  |   '  |RShift|
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SYMB  | SPC   |    | ENTER | BKSPC| CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | CMD  |BKSPC | SPC   |    | ENTER | FKEY | CMD  | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
 */
 [_SYMBL] = LAYOUT(
@@ -84,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |  F1  |  F2  |  F3  |  F4  |      |-------'    '-------|      |      |      |      |      |      |
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SYMB  | SPC   |    | ENTER | BKSPC| CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | CMD  |BKSPC | SPC   |    | ENTER | FKEY | CMD  | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
 */
 [_FKEY] = LAYOUT(
@@ -105,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------.    .-------| Undo | Again|      |      |      |      |
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SYMB  | SPC   |    | ENTER | BKSPC| CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | CMD  |BKSPC | SPC   |    | ENTER | FKEY | CMD  | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
  */
 [_NAV] = LAYOUT(
