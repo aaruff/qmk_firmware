@@ -38,7 +38,7 @@
 // Tapping term is the time (in ms) before a tap becomes a hold
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM // undefine TAPPING_TERM if it is already defined
-    #define TAPPING_TERM 175
+    #define TAPPING_TERM 200 
 #endif
 #define PERMISSIVE_HOLD
 //----------------------------------------------------------------------
