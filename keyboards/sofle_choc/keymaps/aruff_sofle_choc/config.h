@@ -41,6 +41,8 @@
     #define TAPPING_TERM 200 
 #endif
 #define PERMISSIVE_HOLD
+
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 //----------------------------------------------------------------------
 // Encoder Settings
 //----------------------------------------------------------------------

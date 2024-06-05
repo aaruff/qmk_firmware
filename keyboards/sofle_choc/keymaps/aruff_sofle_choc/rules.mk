@@ -21,3 +21,6 @@ OLED_ENABLE = yes
 
 # WPM Support
 WPM_ENABLE = no
+
+# Enable Caps Word
+CAPS_WORD_ENABLE = yes

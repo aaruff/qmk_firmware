@@ -1,31 +1,58 @@
 layout: {qmk_keyboard: sofle_choc, qmk_layout: LAYOUT}
 layers:
-  QWERTY:
+  L0:
   - ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   - ['0', '-', TAB, Q, W, E, R, T, Y, U]
-  - [I, O, P, '=', ESC, A, S, D, NAV F, SMB G]
-  - [H, J, K, L, ;, '''', LSFT, CTL Z, ALT X, GUI C]
-  - [SFT V, B, '', '', N, SFT M, GUI COMM, ALT DOT, CTL SLSH, RSFT]
-  - [CUT, PASTE, COPY, SPC, BSPC, ESC, ENT, FKEY, '', DEL]
-  SYMBOL:
-  - ['', '', '', '', '', '', '', '', '', '']
-  - ['', '', '', '', '', '', '', '', '', '{']
-  - ['}', '|', \, '-', '', '', '', '', '', '']
-  - - ''
-    - '['
-    - ']'
-    - +
-    - CTL SLSH
-    - '='
+  - [I, O, P, '=', ESC, A, SMB S, D, NAV F, G]
+  - [H, J, K, L, ;, BSPC, LSFT, Z, X, C]
+  - [V, B, '', '', N, M, ',', ., /, RSFT]
+  - [LCTL, LALT, LGUI, SPC, SMB, FKEY, ENT, RGUI, RALT, RCTL]
+  L1:
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '-'
+    - '{'
+  - - '}'
+    - '|'
+    - \
+    - _
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - '"'
+    - '['
+    - ']'
+    - +
+    - /
+    - PEQL
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - ''
     - ''
-    - ''
-    - ''
+    - ''''
     - SC LSPO
     - SC RSPC
     - ','
@@ -41,21 +68,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  FKEY:
-  - ['', '', '', '', '', '', '', '', '', '']
-  - ['', '', '', F9, F10, F11, F12, '', '', '']
-  - ['', '', '', '', '', F5, F6, F7, F8, '']
-  - - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - {t: ▽, type: trans}
-    - F1
-    - F2
-    - F3
-  - [F4, '', '', '', '', '', '', '', '', '']
+  L2:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -66,7 +79,57 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  NAV:
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - F9
+    - F10
+    - F11
+    - F12
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - F5
+    - F6
+    - F7
+    - F8
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - F1
+    - F2
+    - F3
+  - - F4
+    - {t: ▽, type: trans}
+    - ''
+    - ''
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  L3:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
