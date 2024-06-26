@@ -14,10 +14,15 @@ enum custom_keycodes {
     KC_SMB,
     KC_NAV,
     KC_FKEY,
+    ALT_GUI_LEFT,
+    ALT_GUI_RIGHT,
 };
 
 // Define aliases for Mod-Tap keys
 #define NAV_F      LT(KC_NAV, KC_F)
+#define BSPC_RSFT      MT(MOD_RSFT, KC_BSPC)
+#define FKEY_SCLN      LT(KC_FKEY, KC_SCLN)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
@@ -29,41 +34,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | TAB  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  =   |
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |   A  |   S  |   D  |   F  |   G  |                    |   H  |   J  |   K  |   L  |   ;  | BSC  |
- * |      |      | SYMB |      | NAV  |      |-------.    ,-------|      |      |      |      |      |      |
+ * | ESC  |   A  |   S  |   D  |   F  |   G  |                    |   H  |   J  |   K  |   L  |   ;  |   '  |
+ * |      |      |      |      | NAV  |      |-------.    ,-------|      |      |      |      | FKEY |   "  |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------'    '-------|   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SPC   | SMB   |    | FKEY  | ENT  | CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | LGUI | SPC  | SYMB  |    | SYMB  | ENT  | RGUI | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
  */
 
 [_QWERTY]=LAYOUT(
-     KC_GRV,  KC_1,   KC_2,    KC_3,   KC_4,   KC_5,                        KC_6,  KC_7,      KC_8,    KC_9,     KC_0, KC_MINS,
-     KC_TAB,  KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,                        KC_Y,  KC_U,      KC_I,    KC_O,     KC_P,  KC_EQL,
-    KC_ESC,  KC_A,   KC_S,    KC_D,   NAV_F,   KC_G,                        KC_H,  KC_J,      KC_K,    KC_L,  KC_SCLN,  KC_BSPC,
-    KC_LSFT, KC_Z,  KC_X,   KC_C,  KC_V,   KC_B, XXXXXXX,      XXXXXXX, KC_N, KC_M,  KC_COMM, KC_DOT, KC_SLSH,  KC_RSFT,
-            KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, KC_SMB,                        KC_FKEY, KC_ENT, KC_RGUI, KC_RALT, KC_RCTL
+     KC_GRV,  KC_1,   KC_2,    KC_3,   KC_4,   KC_5,                        KC_6,   KC_7,       KC_8,    KC_9,      KC_0, KC_MINS,
+     KC_TAB,  KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,                        KC_Y,   KC_U,       KC_I,    KC_O,      KC_P,  KC_EQL,
+    KC_ESC,  KC_A,   KC_S,    KC_D,   NAV_F,   KC_G,                        KC_H,   KC_J,       KC_K,    KC_L, FKEY_SCLN,  KC_QUOT,
+    KC_LSFT, KC_Z,  KC_X,   KC_C,  KC_V,   KC_B, XXXXXXX,          XXXXXXX, KC_N,   KC_M,    KC_COMM,  KC_DOT,   KC_SLSH, BSPC_RSFT,
+            KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, KC_SMB,                    KC_SMB, KC_ENT,    KC_RGUI, KC_RALT,   KC_RCTL
 ),
 
 /* SYMBL
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |   -  |   {  |   }  |   |  |   \  |  _   |
+ * |      |      |      |      |      |      |                    |   "  |   {  |   }  |   |  |   \  |  /   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|   "  |   [  |   ]  |   +  |   /  |  =   |
+ * |      |ALTGL |      |      |ALTGR |      |-------.    ,-------|   -  |   [  |   ]  |      | BKSC |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------'    '-------|   '  |   (  |   )  |   ,  |   '  |RShift|
+ * |      |      |      |      |      |      |-------'    '-------|   _  |   (  |   )  |      |      |      |
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SPC   | SMB   |    | ENTER | FKEY | CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | LGUI | SPC  | SYMB  |    | SYMB  | ENT  | RGUI | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
 */
 [_SYMBL] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,                         KC_MINUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, KC_UNDS,
-  _______, _______, _______, _______, _______, _______,                         KC_DQT, KC_LBRC, KC_RBRC, KC_PLUS, KC_SLSH, KC_PEQL,
-  _______, _______, _______, _______, _______, _______,XXXXXXX,XXXXXXX, KC_QUOT, SC_LSPO, SC_RSPC, KC_COMM, KC_SCLN, _______,
+  _______, _______, _______, _______, _______, _______,                         KC_QUOT, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, KC_RBRC,
+  _______, ALT_GUI_LEFT, _______, _______, ALT_GUI_RIGHT, _______,                         KC_MINUS, KC_LBRC, KC_RBRC, XXXXXXX, KC_BSPC, _______,
+  _______, _______, _______, _______, _______, _______,XXXXXXX        ,XXXXXXX, KC_UNDS, KC_LPRN, KC_RPRN, _______, _______, _______,
            _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
 ),
 /* FKEY
@@ -76,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |  F1  |  F2  |  F3  |  F4  |      |-------'    '-------|      |      |      |      |      |      |
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SPC   | SMB   |    | ENTER | FKEY | CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | LGUI | SPC  | SYMB  |    | SYMB  | ENT  | RGUI | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
 */
 [_FKEY] = LAYOUT(
@@ -91,18 +96,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    | Paste| Copy | Cut  |      |      |      |
+ * |      |      |      |      |      |      |                    |      | Copy | Cut  |      | Paste|      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------.    ,-------| Left | Down | Up   |Right |  Del | Bspc |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------.    .-------| Undo | Again|      |      |      |      |
  * `-----------------------------------------|-------.    .-------|-----------------------------------------'
- *               | CTRL | ALT  | CMD  |SPC   | SMB   |    | ENTER | FKEY | CMD  | ALT  | CTRL  |
+ *               | CTRL | ALT  | LGUI | SPC  | SYMB  |    | SYMB  | ENT  | RGUI | ALT  | CTRL  |
  *               `-----------------------------------'    '------------------------------------'
  */
 [_NAV] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX ,XXXXXXX,
-  _______, _______, _______, _______, _______, _______,                          C(KC_V), C(KC_C), C(KC_X), XXXXXXX, XXXXXXX, XXXXXXX,
+  _______, _______, _______, _______, _______, _______,                          XXXXXXX, KC_COPY, C(KC_X), XXXXXXX, KC_PASTE, XXXXXXX,
   _______, _______, _______, _______, _______, _______,                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
   _______, _______, _______, _______, _______, _______, XXXXXXX,       XXXXXXX,  KC_UNDO, KC_AGIN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
            _______, _______, _______, _______, _______,                          _______, _______, _______, _______, _______
@@ -140,11 +145,6 @@ static void render_logo(void) {
 }
 
 // 32 * 14 OS logos
-static const char PROGMEM windows_logo[] = {
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbc, 0xbc, 0xbe, 0xbe, 0x00, 0xbe,
-    0xbe, 0xbf, 0xbf, 0xbf, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x0f, 0x0f, 0x00, 0x0f, 0x0f, 0x1f,
-    0x1f, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 static const char PROGMEM mac_logo[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf0, 0xf8, 0xf8, 0xf8, 0xf0,
     0xf6, 0xfb, 0xfb, 0x38, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -226,6 +226,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_NAV);
             }
             return false;
+        case KC_COPY:
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_C);
+                unregister_code(KC_C);
+                unregister_code(KC_LGUI);
+            }
+            break;
+        case KC_PASTE:
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_V);
+                unregister_code(KC_V);
+                unregister_code(KC_LGUI);
+            }
+            break;
+        case ALT_GUI_LEFT:
+            if (record->event.pressed) {
+                register_code(KC_LALT);
+                register_code(KC_LGUI);
+                register_code(KC_LEFT);
+            } else {
+                unregister_code(KC_LEFT);
+                unregister_code(KC_LGUI);
+                unregister_code(KC_LALT);
+            }
+            break;
+        case ALT_GUI_RIGHT:
+            if (record->event.pressed) {
+                register_code(KC_LALT);
+                register_code(KC_LGUI);
+                register_code(KC_RIGHT);
+            } else {
+                unregister_code(KC_RIGHT);
+                unregister_code(KC_LGUI);
+                unregister_code(KC_LALT);
+            }
+            break;
     }
     return true;
 }
