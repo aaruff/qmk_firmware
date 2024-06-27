@@ -38,7 +38,7 @@
 // Tapping term is the time (in ms) before a tap becomes a hold
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM // undefine TAPPING_TERM if it is already defined
-    #define TAPPING_TERM 200 
+    #define TAPPING_TERM 180
 #endif
 #define PERMISSIVE_HOLD
 
@@ -54,5 +54,5 @@
 //----------------------------------------------------------------------
 // OLED Settings
 //----------------------------------------------------------------------
-#define OLED_TIMEOUT 120000
+#define OLED_TIMEOUT 12000
 #define OLED_BRIGHTNESS 120
