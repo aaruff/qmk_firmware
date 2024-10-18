@@ -23,7 +23,7 @@ OLED_ENABLE = yes
 WPM_ENABLE = no
 
 # Enable Caps Word
-CAPS_WORD_ENABLE = yes
+CAPS_WORD_ENABLE = no
 
 # RGB Matrix Enable
 RGB_MATRIX_ENABLE = yes
