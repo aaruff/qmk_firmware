@@ -2,9 +2,9 @@ layout: {qmk_keyboard: sofle_choc, qmk_layout: LAYOUT}
 layers:
   L0:
   - ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-  - ['0', '-', TAB, Q, W, E, R, T, Y, U]
-  - [I, O, P, '=', ESC, A, SMB S, D, NAV F, G]
-  - [H, J, K, L, ;, BSPC, LSFT, Z, X, C]
+  - ['0', BSPC, TAB, Q, W, E, R, T, Y, U]
+  - [I, O, P, '=', ESC, A, S, D, NAV F, G]
+  - [H, J, K, L, ;, '''', LSFT, Z, X, C]
   - [V, B, '', '', N, M, ',', ., /, RSFT]
   - [LCTL, LALT, LGUI, SPC, SMB, FKEY, ENT, RGUI, RALT, RCTL]
   L1:
@@ -26,24 +26,24 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - '-'
+    - ''''
     - '{'
   - - '}'
     - '|'
     - \
-    - _
+    - ']'
+    - {t: ▽, type: trans}
+    - ALT GUI LEFT
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - ALT GUI RIGHT
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - '"'
+  - - '-'
     - '['
     - ']'
-    - +
-    - /
-    - PEQL
+    - ''
+    - ''
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -52,11 +52,11 @@ layers:
     - {t: ▽, type: trans}
     - ''
     - ''
-    - ''''
-    - SC LSPO
-    - SC RSPC
-    - ','
-    - ;
+    - _
+    - (
+    - )
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -148,11 +148,11 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - Ctl+ V
-    - Ctl+ C
+    - ''
+    - COPY
   - - Ctl+ X
     - ''
-    - ''
+    - PASTE
     - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
