@@ -142,7 +142,8 @@ static void render_logo(void) {
         };
 
     oled_write_raw_P(logo, sizeof(logo));
-    oled_write_P(PSTR("\nRuff\n"), false);
+    oled_set_cursor(0, 5);
+    oled_write_P(PSTR("\n Ruff\n"), false);
 }
 
 // 32 * 14 OS logos
