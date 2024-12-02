@@ -2,7 +2,8 @@
 #include QMK_KEYBOARD_H
 
 enum sofle_layers {
-    _QWERTY = 0,
+    _QWERTY_MAC = 0,
+    _QWERTY_WIN,
     _SYMBL,
     _NAV,
     _FKEY,
@@ -10,7 +11,8 @@ enum sofle_layers {
 
 // Custom Keycodes for Layer Switching
 enum custom_keycodes {
-    KC_QWERTY = SAFE_RANGE,
+    KC_QWERTY_MAC = SAFE_RANGE,
+    KC_QWERTY_WIN,
     KC_SMB,
     KC_NAV,
     KC_FKEY,
@@ -42,19 +44,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `-----------------------------------'    '------------------------------------'
  */
 
-[_QWERTY]=LAYOUT(
+[_QWERTY_MAC]=LAYOUT(
      KC_GRV,  KC_1,   KC_2,    KC_3,   KC_4,   KC_5,                        KC_6,   KC_7,       KC_8,    KC_9,      KC_0, KC_BSPC,
      KC_TAB,  KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,                        KC_Y,   KC_U,       KC_I,    KC_O,      KC_P,  KC_EQL,
     KC_ESC,  KC_A,   KC_S,    KC_D,   NAV_F,   KC_G,                        KC_H,   KC_J,       KC_K,    KC_L, KC_SCLN,  KC_QUOT,
     KC_LSFT, KC_Z,  KC_X,   KC_C,  KC_V,   KC_B, XXXXXXX,          XXXXXXX, KC_N,   KC_M,    KC_COMM,  KC_DOT,   KC_SLSH, KC_RSFT,
             KC_LCTL, KC_LOPT, KC_LGUI, KC_SPC, KC_SMB,                    KC_FKEY, KC_ENT,    KC_RGUI, KC_ROPT,   KC_RCTL
 ),
+/*
+ * QWERTY
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | BKSP |
+ * |  ~   |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | TAB  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  =   |
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | ESC  |   A  |   S  |   D  |   F  |   G  |                    |   H  |   J  |   K  |   L  |   ;  |   '  |
+ * |      |      |      |      | NAV  |      |-------.    ,-------|      |      |      |      |   :  |   "  |
+ * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+ * |LShift|   Z  |   X  |   C  |   V  |   B  |-------'    '-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+ * `-----------------------------------------|-------.    .-------|-----------------------------------------'
+ *               | CTRL | ALT  | LOPT | SPC  | SYMB  |    |KC_FKEY| ENT  | RGUI | ROPT | CTRL  |
+ *               `-----------------------------------'    '------------------------------------'
+ */
+
+[_QWERTY_WIN]=LAYOUT(
+     KC_GRV,  KC_1,   KC_2,    KC_3,   KC_4,   KC_5,                        KC_6,   KC_7,       KC_8,    KC_9,      KC_0, KC_BSPC,
+     KC_TAB,  KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,                        KC_Y,   KC_U,       KC_I,    KC_O,      KC_P,  KC_EQL,
+    KC_ESC,  KC_A,   KC_S,    KC_D,   NAV_F,   KC_G,                        KC_H,   KC_J,       KC_K,    KC_L, KC_SCLN,  KC_QUOT,
+    KC_LSFT, KC_Z,  KC_X,   KC_C,  KC_V,   KC_B, XXXXXXX,          XXXXXXX, KC_N,   KC_M,    KC_COMM,  KC_DOT,   KC_SLSH, KC_RSFT,
+            KC_LGUI, KC_LOPT, KC_LCTL, KC_SPC, KC_SMB,                    KC_FKEY, KC_ENT,    KC_RCTL, KC_ROPT,   KC_RGUI
+),
 
 /* SYMBL
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |   "  |   {  |   }  |   |  |   \  |  /   |
+ * |      |      | WIN  |      |      |      |                    |   "  |   {  |   }  |   |  |   \  |  /   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |ALTGL |      |      |ALTGR |      |                    |   -  |   [  |   ]  |      |      |   "  |
  * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
@@ -66,14 +93,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [_SYMBL] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,                         KC_QUOT, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, KC_RBRC,
+  _______, _______, KC_QWERTY_WIN, _______, _______, _______,                         KC_QUOT, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, KC_RBRC,
   _______, ALT_GUI_LEFT, _______, _______, ALT_GUI_RIGHT, _______,                         KC_MINUS, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, _______,
   _______, _______, _______, _______, _______, _______,XXXXXXX        ,XXXXXXX, KC_UNDS, KC_LPRN, KC_RPRN, _______, _______, _______,
            _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
 ),
 /* FKEY
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |      | Mac  | Win  |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |  F9  | F10  | F11  | F12  |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -85,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `-----------------------------------'    '------------------------------------'
 */
 [_FKEY] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
+  _______, KC_QWERTY_MAC, KC_QWERTY_WIN, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
   _______, KC_F9, KC_F10, KC_F11, KC_F12, _______,                         _______, _______, _______, _______, _______, _______,
   _______, KC_F5, KC_F6, KC_F7, KC_F8, _______,                         _______, _______, _______, _______, _______, _______,
   _______, KC_F1, KC_F2, KC_F3, KC_F4, _______,XXXXXXX,XXXXXXX, _______, _______, _______, _______, _______, _______,
@@ -119,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //--------------------------------------------------------------------------------------------------
 void keyboard_post_init_user(void) {
     rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-    rgb_matrix_sethsv_noeeprom(0, 0, 120);  // Hue 0, Saturation 0 (white), Brightness 120
+    rgb_matrix_sethsv_noeeprom(0, 0, 0);  // Hue 0, Saturation 0 (white), Brightness 120
 }
 
 
@@ -153,19 +180,47 @@ static const char PROGMEM mac_logo[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x07, 0x0f, 0x1f, 0x1f, 0x0f, 0x0f, 0x1f,
     0x1f, 0x0f, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
+static const char PROGMEM windows_logo[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbc, 0xbc, 0xbe, 0xbe, 0x00, 0xbe,
+    0xbe, 0xbf, 0xbf, 0xbf, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x0f, 0x0f, 0x00, 0x0f, 0x0f, 0x1f,
+    0x1f, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
 static void print_logo_narrow(void) {
     render_logo();
 }
 
 static void print_status_narrow(void) {
-    oled_set_cursor(0, 0);
-    oled_write_raw_P(mac_logo, sizeof(mac_logo));
-    oled_set_cursor(0, 5);
+    uint8_t current_layer = get_highest_layer(layer_state);
+    // If the default layer is not set, set it to the highest layer
+    if (current_layer == 0) {
+        current_layer = get_highest_layer(default_layer_state);
+    }
+
+    switch (current_layer) {
+        case _QWERTY_MAC:
+            oled_set_cursor(0, 0);
+            oled_write_raw_P(mac_logo, sizeof(mac_logo));
+            oled_set_cursor(0, 5);
+            break;
+        case _QWERTY_WIN:
+            oled_set_cursor(0, 0);
+            oled_write_raw_P(windows_logo, sizeof(windows_logo));
+            oled_set_cursor(0, 5);
+            break;
+        default:
+            oled_set_cursor(0, 0);
+            oled_write_raw_P(PSTR("Unknown\n"), false);
+            oled_set_cursor(0, 5);
+    }
 
     oled_write_ln_P(PSTR("LAYER"), false);
-    switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
-            oled_write_P(PSTR("Qwrty\n"), false);
+    switch (current_layer) {
+        case _QWERTY_MAC:
+            oled_write_P(PSTR("Mac\n"), false);
+            break;
+        case _QWERTY_WIN:
+            oled_write_P(PSTR("Win\n"), false);
             break;
         case _NAV:
             oled_write_P(PSTR("Nav\n"), false);
@@ -216,16 +271,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_NAV);
             }
             return false;
-        case KC_QWERTY:
+        case KC_QWERTY_MAC:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_QWERTY);
+                set_single_persistent_default_layer(_QWERTY_MAC);
+            }
+            return false;
+        case KC_QWERTY_WIN:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_QWERTY_WIN);
             }
             return false;
         case KC_FKEY:
             if (record->event.pressed) {
-                layer_on(_NAV);
+                layer_on(_FKEY);
             } else {
-                layer_off(_NAV);
+                layer_off(_FKEY);
             }
             return false;
         case KC_COPY:
@@ -235,7 +295,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_C);
                 unregister_code(KC_LGUI);
             }
-            break;
+            return false;
         case KC_PASTE:
             if (record->event.pressed) {
                 register_code(KC_LGUI);
@@ -243,7 +303,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_V);
                 unregister_code(KC_LGUI);
             }
-            break;
+            return false;
         case ALT_GUI_LEFT:
             if (record->event.pressed) {
                 register_code(KC_LALT);
@@ -254,7 +314,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_LGUI);
                 unregister_code(KC_LALT);
             }
-            break;
+            return false;
         case ALT_GUI_RIGHT:
             if (record->event.pressed) {
                 register_code(KC_LALT);
@@ -265,7 +325,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_LGUI);
                 unregister_code(KC_LALT);
             }
-            break;
+            return false;
     }
     return true;
 }
